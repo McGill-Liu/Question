@@ -24,12 +24,35 @@ const goToQuestionBtn = document.getElementById('go-to-question-btn');
 let currentQuestionIndex = 0;
 let userAnswers = [];
 let quizFinished = false;
+let questions = []; // 全局题目数组
 
 // 页面加载完成后初始化测验
 document.addEventListener('DOMContentLoaded', function() {
-    initQuiz();
+    // 检查是否有全局定义的题目数组
+    if (typeof window.questions !== 'undefined' && window.questions.length > 0) {
+        initQuizWithQuestions(window.questions);
+    }
     setupEventListeners();
 });
+
+// 使用指定的题目数组初始化测验
+function initQuizWithQuestions(quizQuestions) {
+    questions = quizQuestions;
+    currentQuestionIndex = 0;
+    userAnswers = new Array(questions.length);
+    quizFinished = false;
+    
+    // 初始化题号选择下拉框
+    initQuestionSelector();
+    
+    showQuestion(currentQuestionIndex);
+    updateProgress();
+    updateNavigationButtons();
+    
+    // 隐藏结果容器，显示测验容器
+    document.getElementById('quiz-container').classList.remove('hidden');
+    document.getElementById('results-container').classList.add('hidden');
+}
 
 // HTML转义函数，将特殊字符转换为HTML实体
 function escapeHtml(text) {
