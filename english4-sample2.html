@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大学英语4样卷2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>大学英语4样卷2</h1>
+        </header>
+        
+        <main>
+            <div id="quiz-container">
+                <div class="page-header">
+                    <a href="index.html" class="btn return-home-btn">返回首页</a>
+                </div>
+                
+                <div id="question-section">
+                    <div id="question-header">
+                        <span id="current-question">第1题</span>
+                        <span id="question-type"></span>
+                        <span id="progress">进度: 1/0</span>
+                    </div>
+                    <div id="question-text"></div>
+                    <div id="options-container"></div>
+                    <div id="answer-container" class="hidden">
+                        <h3>正确答案：</h3>
+                        <div id="correct-answer"></div>
+                    </div>
+                </div>
+                
+                <div class="question-navigation">
+                    <div class="question-selector">
+                        <label for="question-select">跳转到题目：</label>
+                        <select id="question-select"></select>
+                        <button id="go-to-question-btn" class="btn">跳转</button>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button id="prev-btn" class="btn" disabled>上一题</button>
+                    <button id="next-btn" class="btn">下一题</button>
+                    <button id="show-answer-btn" class="btn">查看答案</button>
+                    <button id="hide-answer-btn" class="btn hidden">隐藏答案</button>
+                    <button id="submit-anytime-btn" class="btn">交卷</button>
+                    <button id="submit-btn" class="btn hidden">提交答案</button>
+                    <button id="results-btn" class="btn hidden">查看结果</button>
+                </div>
+            </div>
+            
+            <div id="results-container" class="hidden">
+                <div class="page-header">
+                    <a href="index.html" class="btn return-home-btn">返回首页</a>
+                </div>
+                
+                <h2>答题结果</h2>
+                <div id="score-summary"></div>
+                <div id="detailed-results"></div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="english4-sample2_questions.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // 初始化英语4样卷2题库
+        window.questions = english4Sample2Questions;
+        if (typeof initQuizWithQuestions !== 'undefined') {
+            initQuizWithQuestions(english4Sample2Questions);
+        }
+    </script>
+</body>
+</html>
